@@ -23,11 +23,12 @@ Route::get('/logout', 'otentikasi\OtentikasiController@logout') -> name('logout'
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/tambahuser', 'otentikasi\OtentikasiController@tambah' )-> name('tambah-user') ;
     Route::post('/tambahuser/simpan', 'otentikasi\OtentikasiController@simpan') -> name('tambah-user-simpan');
-//profile user
+    //profile user
     Route::get('/profile', 'otentikasi\OtentikasiController@profile' )-> name('profile') ;
     Route::post('/profile/simpan', 'otentikasi\OtentikasiController@profilesimpan') -> name('profile-user-simpan');
     //home
     Route::get('/home', function () {    return view('home');    });
     Route::resource('parameteruji','parameterujiController');
+    Route::resource('datapelanggan','datapelangganController');
     Route::get('/', function () {    return view('home');    });
 });

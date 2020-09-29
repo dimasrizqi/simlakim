@@ -19,9 +19,9 @@
               <li class="menu-header">Data Dasar</li>
               <li class="nav-item dropdown">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown">
-                  <i class="far fa-file-alt"></i> <span>DATA DASaR</span></a>
+                  <i class="far fa-file-alt"></i> <span>DATA DASAR</span></a>
                 <ul class="dropdown-menu">
-                  <li><a class="nav-link" href="#">Data Pelanggan</a></li> 
+                  <li><a class="nav-link" href="{{route('datapelanggan.index')}}">Data Pelanggan</a></li> 
                   <li><a class="nav-link" href="{{route('parameteruji.index')}}">Parameter Uji</a></li> 
                 </ul>
               </li>

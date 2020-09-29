@@ -24,7 +24,7 @@
                     </div>
                     @endif
                     @foreach ($parameter_uji  as $no => $item)
-                        {{$no+1  }} . {{$item->name}}<br>
+                        {{$no+1  }} . {!!$item->name!!}<br>
                         <form action="{{ route('parameteruji.destroy',$item->id) }}" method="POST">
                             {{-- <a class="btn btn-info" href="{{ route('products.show',$product->id) }}">Show</a> --}}
                             <a class="btn btn-primary" href="{{ route('parameteruji.edit',$item->id) }}">Edit</a>

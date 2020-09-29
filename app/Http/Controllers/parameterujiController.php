@@ -18,12 +18,7 @@ class parameterujiController extends Controller
          return view('lab_kimia.parameter_uji.tambah-parameter-uji');
         
     }
-    public function hapus(Request $request){
-        // return $request;
-        //untuk script hapus
-        // DB::table('jenis_program')->where('id',$request->id)->delete();
-        // return redirect()->route('lab_kimia-index-jenis-program')->with('Jenis program dihapus');
-    }
+    
 
     public function store(Request $request){
         $data_insert[] = array(

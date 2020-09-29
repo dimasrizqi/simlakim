@@ -15,7 +15,7 @@ class datapelangganController extends Controller
     }
 
     public function create(){
-         return view('lab_kimia.data_pelanggan.tambah-parameter-uji');
+         return view('lab_kimia.data_pelanggan.tambah');
         
     }
     public function hapus(Request $request){
@@ -28,10 +28,13 @@ class datapelangganController extends Controller
     public function store(Request $request){
         $data_insert[] = array(
             'name' => $request->name,
+            'tlp' => $request->tlp,
+            'alamat' => $request->alamat,
+            'email' => $request->email,
         );
 
         DB::table('data_pelanggan')->insert( $data_insert);
-        return Redirect()->route('parameteruji.index') -> with('success','berhasil menambah data');
+        return Redirect()->route('datapelanggan.index') -> with('success','berhasil menambah data');
     }
 
     public function update(Request $request,  $id)
@@ -41,7 +44,7 @@ class datapelangganController extends Controller
               ->where('id', $id)
               ->update(['name' => $request->name]);
 
-        return redirect()->route('parameteruji.index')
+        return redirect()->route('datapelanggan.index')
                         ->with('success','Data berhasil di update');
     }
 
@@ -58,6 +61,6 @@ class datapelangganController extends Controller
         
         DB::table('data_pelanggan')->where('id','=', $id)->delete();
         
-        return redirect()->route('parameteruji.index') -> with('deleted','berhasil menghapus');
+        return redirect()->route('datapelanggan.index') -> with('deleted','berhasil menghapus');
     }
 }

@@ -1,11 +1,11 @@
 @extends('layouts.master')
-@section('title', 'Daftar parameter uji')
+@section('title', 'Data Pelanggan')
 
 @section('content')
     <section class="section">
         <div class="section-header">
         
-        <h1><a href="{{ route('parameteruji.create') }}" class="btn btn-info">Tambah Data</a>    Parameter uji </h1> 
+        <h1><a href="{{ route('datapelanggan.create') }}" class="btn btn-info">Tambah Data</a>    Data Pelanggan </h1> 
         </div>
     </section>
     <div class="section-body">
@@ -23,11 +23,11 @@
                         <p>{{ $message }}</p>
                     </div>
                     @endif
-                    @foreach ($parameter_uji  as $no => $item)
+                    @foreach ($data_pelanggan  as $no => $item)
                         {{$no+1  }} . {{$item->name}}<br>
-                        <form action="{{ route('parameteruji.destroy',$item->id) }}" method="POST">
+                        <form action="{{ route('datapelanggan.destroy',$item->id) }}" method="POST">
                             {{-- <a class="btn btn-info" href="{{ route('products.show',$product->id) }}">Show</a> --}}
-                            <a class="btn btn-primary" href="{{ route('parameteruji.edit',$item->id) }}">Edit</a>
+                            <a class="btn btn-primary" href="{{ route('datapelanggan.edit',$item->id) }}">Edit</a>
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Delete</button>

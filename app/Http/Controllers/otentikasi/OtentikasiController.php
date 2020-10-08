@@ -13,6 +13,10 @@ use App\User;
 
 class OtentikasiController extends Controller
 {
+    public function lihatuser(){
+        $datauser = DB::table('users')->orderBy('name','ASC')->get();
+        return view('otentikasi.index',['datauser'=>$datauser]);
+    }
     public function index(){
         return view('otentikasi.login');
     }

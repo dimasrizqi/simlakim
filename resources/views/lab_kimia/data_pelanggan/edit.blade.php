@@ -42,7 +42,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>* No. Tlp / Handphone</label>
-                                        <input type="text"  value="{{$item->tlp}}" placeholder="Masukan no tlp yang bisa dihubungi" name="tlp" class="form-control" required>
+                                        <input type="number"  value="{{$item->tlp}}" placeholder="Masukan no tlp yang bisa dihubungi" name="tlp" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">

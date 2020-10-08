@@ -27,7 +27,7 @@
                         {{$no+1  }} . {{$item->name}}<br>
                         <form action="{{ route('datapelanggan.destroy',$item->id) }}" method="POST">
                             {{-- <a class="btn btn-info" href="{{ route('products.show',$product->id) }}">Show</a> --}}
-                            <a class="btn btn-primary" href="{{ route('datapelanggan.edit',$item->id) }}">Edit</a>
+                            <a class="btn btn-primary" href="{{ route('datapelanggan.edit',$item->id) }}">Show</a>
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Delete</button>

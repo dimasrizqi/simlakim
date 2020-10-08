@@ -32,7 +32,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>* No. Tlp / Handphone</label>
-                                        <input type="text" placeholder="Masukan no tlp yang bisa dihubungi" name="tlp" class="form-control" required>
+                                        <input type="number" placeholder="Masukan no tlp yang bisa dihubungi" name="tlp" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">

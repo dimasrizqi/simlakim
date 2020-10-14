@@ -19,20 +19,6 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label >* Kategori Parameter Uji</label>
-                                        <select name="kategori" class="form-control" >
-                                            <option value="">Silahkan pilih</option>
-                                            <option value="1">Physicals Properties</option>
-                                            <option value="2">Chemicals Properties</option>
-                                            <option value="3">Heavy Metal</option>
-                                            <option value="4">Biology Properties</option>
-                                            <option value="5">LUMSUM/Hari</option>
-                                        </select>
-                                    </div>
-
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
                                         <i>* jika ingin memasukan simbol  di atas silahkan ketik dengan menambahkan tag <b> &lt;sup&gt;angka atau hurufnya&lt;sup&gt;</b></i> Cth : H&lt;sup&gt;2&lt;sup&gt;O | Hasil H<sup>2</sup>O<br>
                                         <i>* jika ingin memasukan simbol  di bawah silahkan ketik dengan menambahkan tag <b> &lt;sub&gt;angka atau hurufnya&lt;sub&gt; </b> </i> Cth : H&lt;sub&gt;2&lt;sub&gt;O | Hasil H<sub>2</sub>O<br><br>
                                         <label>* Nama</label>

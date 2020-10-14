@@ -59,8 +59,8 @@ class datapelangganController extends Controller
     {
         // dd($id);
         
-        DB::table('data_pelanggan')->where('id','=', $id)->delete();
+        DB::table('users')->where('id','=', $id)->delete();
         
-        return redirect()->route('datapelanggan.index') -> with('deleted','berhasil menghapus');
+        return redirect()->route('lihat-user') -> with('deleted','berhasil menghapus');
     }
 }

@@ -10,20 +10,26 @@ use Carbon\Carbon;
 class bukuindukController extends Controller
 {
     public function index(){
+        $data_pelanggan = DB::table('data_pelanggan')->get();
         $collections = DB::table('buku_induk')->orderBy('id','DESC')->get();
-        return view('lab_kimia.bukuinduk.index',['collections' => $collections]);
+        return view('lab_kimia.bukuinduk.index',[
+            'collections' => $collections,
+            'data_pelanggan' => $data_pelanggan]);
     }
+
     public function create(){
         $parameter_uji = DB::table('parameter_uji')->OrderBy('name','ASC')->get();
         $usernya = DB::table('users')->OrderBy('name','ASC')->get();
         $pelanggan = DB::table('data_pelanggan')->OrderBy('name','ASC')->get();
         
-        return view('lab_kimia.bukuinduk.tambah',['parameter_uji'=>$parameter_uji,'usernya'=>$usernya,'pelanggan'=>$pelanggan]);
+        return view('lab_kimia.bukuinduk.tambah',['parameter_uji'=>$parameter_uji,
+        'usernya'=>$usernya,
+        'pelanggan'=>$pelanggan]);
        
    }
    public function store(Request $request){
     $collections = DB::table('buku_induk')->max('id')+1;
-    $volume_berat = $request->volume." " . $request->berat;
+    $volume_berat = $request->volume. " " . $request->berat;
     // no urut (angka)/jenis sampel/bulan/tahun
     $get_bulan = Carbon::now()->locale('id')->isoFormat('MM');
     $get_tahun = Carbon::now()->locale('id')->isoFormat('Y');
@@ -66,10 +72,49 @@ class bukuindukController extends Controller
         DB::table('pilih_p_u')->insert($insert_data_pu);
         return Redirect()->route('bukuinduk.index') -> with('success','berhasil menambah data');
     }
-   
+    public function update(Request $request,  $id)
+    {
+        $volume_berat = $request->volume. " " . $request->berat;
+        $data_insert[] = array(
+            'pelanggan' => $request->pelanggan,
+            'di_serahkan' => $request->di_serahkan,
+            'petugas_pelayanan' => $request->petugas_pelayanan,
+            'petugas_sampling' => $request->petugas_sampling,
+            'lokasi' => $request->lokasi,
+            'jenis' => $request->jenis,
+            'wadah' => $request->wadah,
+            'volume_berat' => $volume_berat,
+            'no_sampel' => $request->no_sampel,
+            'jml_sampel' => $request->jml_sampel,
+            'tgl_sampling' => $request->tgl_sampling,
+            'no_fpps' => $request->no_fpps,
+            'spp' => $request->spp
+        );
+        DB::table('buku_induk')
+              ->where('id', $id)
+              ->update(['pelanggan' => $request->pelanggan,
+              'di_serahkan' => $request->di_serahkan,
+              'petugas_pelayanan' => $request->petugas_pelayanan,
+              'petugas_sampling' => $request->petugas_sampling,
+              'lokasi' => $request->lokasi,
+              'jenis' => $request->jenis,
+              'wadah' => $request->wadah,
+              'volume_berat' => $volume_berat,
+              'no_sampel' => $request->no_sampel,
+              'jml_sampel' => $request->jml_sampel,
+              'tgl_sampling' => $request->tgl_sampling,
+              'no_fpps' => $request->no_fpps,
+              'spp' => $request->spp]);
+
+        return redirect()->route('bukuinduk.index')
+                        ->with('success','Data berhasil di update');
+    }
+
     
     public function edit($id)
     {
+        $usernya = DB::table('users')->OrderBy('name','ASC')->get();
+        $data_pelanggan = DB::table('data_pelanggan')->get();
         $buku_induk = DB::table('buku_induk')->where('id',$id)->orderBy('no_fpps','desc')->get();
         $no_fpps = $buku_induk[0]->no_fpps; 
         $parameter_uji = DB::table('parameter_uji')->get();
@@ -81,12 +126,28 @@ class bukuindukController extends Controller
         $ppu_implode = implode(',',$ppu);
         $ppu_explode = explode(",",$ppu_implode);
         //  dd(explode(",",$ppu_implode));
-        return view('lab_kimia.bukuinduk.edit',['buku_induk' => $buku_induk,'ppu_explode' => $ppu_explode,'ppu_implode' => $ppu_implode,'parameter_uji' => $parameter_uji]);
+        return view('lab_kimia.bukuinduk.edit',[
+            'buku_induk' => $buku_induk,
+            'ppu_explode' => $ppu_explode,
+            'ppu_implode' => $ppu_implode,
+            'usernya' => $usernya,
+            'data_pelanggan' => $data_pelanggan,
+            'parameter_uji' => $parameter_uji]);
         
+    }
+    public function destroy($id)
+
+    {
+        // dd($id);
+        
+        DB::table('buku_induk')->where('id','=', $id)->delete();
+        
+        return redirect()->route('bukuinduk.index') -> with('deleted','berhasil menghapus');
     }
     public function print(Request $request )
     {
         $buku_induk = DB::table('buku_induk')->where('id',$request->id)->get();
+        $data_pelanggan = DB::table('data_pelanggan')->get();
         $no_fpps = $buku_induk[0]->no_fpps;
         //Download as pdf
         $pdf = \PDF::setOptions(['isRemoteEnabled' => true])

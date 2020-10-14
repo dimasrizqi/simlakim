@@ -85,16 +85,19 @@
                                         <input type="text" placeholder="" name="jml_sampel" class="form-control" required>
                                     </div>
                                 </div>
-                                <div class="col-md-12">
+                                <div class="col-md-3">
                                     <div class="form-group">
-                                        <label>* Volume Sampel</label>
+                                        <label>* Volume/Berat Sampel</label>
                                         <input type="text" placeholder="" name="volume" class="form-control" required>
                                     </div>
                                 </div>
-                                <div class="col-md-12">
+                                <div class="col-md-3">
                                     <div class="form-group">
-                                        <label>* Berat Sampel</label>
-                                        <input type="text" placeholder="" name="berat" class="form-control" required>
+                                        <label>* Satuan</label>
+                                        <select class="form-control" name="berat" id="berat">
+                                            <option value="ML">ML</option> 
+                                            <option value="KG">KG</option> 
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -107,8 +110,8 @@
                                     <div class="form-group">
                                         <label>* Surat Permintaan Pengujian</label><br>
                                         {{-- <input type="text" placeholder="" name="spp" class="form-control" required> --}}
-                                        <input type="radio" name="spp" value="1" id="spp"> Ya <br>
-                                        <input type="radio" name="spp" value="0" id="spp" checked>Tidak  <br>
+                                        <input type="radio" name="spp" value="1" id="spp" checked> Ya <br>
+                                        <input type="radio" name="spp" value="0" id="spp" > Tidak  <br>
                                     </div>
                                 </div>
                                 <div class="col-md-12">

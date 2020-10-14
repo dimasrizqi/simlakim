@@ -23,6 +23,8 @@ class parameterujiController extends Controller
     public function store(Request $request){
         $data_insert[] = array(
             'name' => $request->name,
+            'kategori' => $request->kategori,
+            'harga' => $request->harga,
         );
 
         DB::table('parameter_uji')->insert( $data_insert);

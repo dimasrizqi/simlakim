@@ -35,6 +35,10 @@ class OtentikasiController extends Controller
     public function tambah(){
         return view('otentikasi.tambah-user');
     }
+
+    public function resetpass(Request $request){
+        return redirect()->route('lihat-user');
+    }
     public function simpan(Request $request){
         //dd($request->all());
         DB::table('users')->insert(
@@ -46,7 +50,7 @@ class OtentikasiController extends Controller
                 'remember_token' => $request->_token
             )
         );
-        return view('otentikasi.tambah-user');
+        return redirect()->route('lihat-user');
     }
     public function profile(){
         $id_user = session()->get('id_user');

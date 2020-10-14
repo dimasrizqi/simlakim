@@ -38,8 +38,12 @@
                                     <td> {{ $no + 1 }} </td>
                                     <td >{{$item->no_fpps}} </td>
                                     <td >{{$item->no_sampel}} </td>
-                                    <td >{{$item->pelanggan}}
+                                    <td >
+                                        @foreach ($data_pelanggan->where('id',$item->pelanggan) as $items)
+                                        {{$items->name}}
+                                        @endforeach
                                         </td>
+                                        
                                     <td style="text-align: right"><form  action="{{ route('bukuinduk-print',$item->id) }}" method="POST">
                                         @csrf
                                         <button type="submit" class="btn btn-success" href="{{ route('bukuinduk-print',$item->id) }}">Print</button>
@@ -52,7 +56,7 @@
                                             
                                             <a class="btn btn-primary" href="{{ route('bukuinduk.edit',$item->id) }}">Show</a>
                                             @method('DELETE')
-                                            {{-- <button type="submit" class="btn btn-danger">Delete</button> --}}
+                                            <button type="submit" class="btn btn-danger">Delete</button>
                                         </form>
                                         
                                     </td>
